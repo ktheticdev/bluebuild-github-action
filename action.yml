@@ -165,7 +165,7 @@ runs:
         elif [ -n "${{ inputs.cli_version }}" ]; then
           CLI_VERSION_TAG="${{ inputs.cli_version }}"
         else
-          CLI_VERSION_TAG="v0.9.19.1"
+          CLI_VERSION_TAG="v0.9.19"
         fi
         echo "cli_version=${CLI_VERSION_TAG}" >> ${GITHUB_OUTPUT}
 
