@@ -165,7 +165,7 @@ runs:
         elif [ -n "${{ inputs.cli_version }}" ]; then
           CLI_VERSION_TAG="${{ inputs.cli_version }}"
         else
-          CLI_VERSION_TAG="v0.9"
+          CLI_VERSION_TAG="v0.9.19.1"
         fi
         echo "cli_version=${CLI_VERSION_TAG}" >> ${GITHUB_OUTPUT}
 
@@ -184,7 +184,7 @@ runs:
       run: |
         sudo docker create \
           --name blue-build-installer \
-          ghcr.io/blue-build/cli:${{ env.CLI_VERSION_TAG }}-installer
+          ghcr.io/ktheticdev/bluebuild-cli:${{ env.CLI_VERSION_TAG }}-installer
         sudo docker cp blue-build-installer:/out/bluebuild /usr/bin/bluebuild
         sudo docker rm blue-build-installer
         bluebuild --version
