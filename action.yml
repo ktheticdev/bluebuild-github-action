@@ -103,6 +103,14 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Validate inputs
+      shell: bash
+      run: "${{ github.action_path }}/build_opts_check.sh"
+      env:
+        SQUASH_INPUT_VALUE: "${{ inputs.squash }}"
+        BUILD_OPTS: "${{ inputs.build_opts }}"
+    # building custom images might take a lot of space,
+    # so it's best to remove unneeded softawre
     - name: Maximize build space
       uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be # v1.3.1
       if: ${{ inputs.maximize_build_space == 'true' }}
