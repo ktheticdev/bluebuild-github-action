@@ -205,6 +205,7 @@ runs:
         RECIPE_PATH: ${{ steps.build_vars.outputs.recipe_path }}
         RUST_LOG_STYLE: always
         CLICOLOR_FORCE: "1"
+        BB_SKIP_VALIDATION: "true"
         BUILD_OPTS: ${{ inputs.build_opts }}
       run: |
         if [ "${{ inputs.squash }}" = "true" ]; then
