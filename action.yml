@@ -205,7 +205,6 @@ runs:
         RECIPE_PATH: ${{ steps.build_vars.outputs.recipe_path }}
         RUST_LOG_STYLE: always
         CLICOLOR_FORCE: "1"
-        BB_SKIP_VALIDATION: "true"
         BUILD_OPTS: ${{ inputs.build_opts }}
       run: |
         if [ "${{ inputs.squash }}" = "true" ]; then
@@ -219,7 +218,7 @@ runs:
         fi
 
         if [ -n "$RUN_SUDO" ]; then
-          sudo -E bluebuild build -v --push ${BUILD_OPTS} ${RECIPE_PATH}
+          sudo -E bluebuild build -v --push ${BUILD_OPTS} --skip-validation ${RECIPE_PATH}
         else
-          bluebuild build -v --push ${BUILD_OPTS} ${RECIPE_PATH}
+          bluebuild build -v --push ${BUILD_OPTS} --skip-validation ${RECIPE_PATH}
         fi
